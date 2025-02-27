@@ -1,0 +1,17 @@
+---
+# Base URL для API Passwork
+passwork_base_url: "https://passwork.eurostil.ru/api/v4"
+
+# API ключ для аутентификации
+passwork_api_key: "U3xp7zECHo4GxqbrizSCooy8cPAqHrUyrdAGohq9QqGAmHZdb5BBRZtFMaGH"
+
+# Настройки нового пароля (можно переопределить в playbook'e)
+passwork_name: "Default Password"       # Название пароля
+passwork_login: "default@example.com"   # Логин
+passwork_password: "defaultpassword123" # Пароль
+
+# ID папки (необязательно)
+passwork_folder_id: 67b85efbda46d78f430238ff
+
+# Примечание к паролю (необязательно)
+passwork_note: "This is a default note"
