@@ -1,0 +1,79 @@
+const https = require('https');
+const Passwork = require('./src/passwork-api'); // Убедитесь, что путь верен
+
+// Конфигурация переменных окружения
+const requiredEnv = [
+    'PASSWORK_API_URL',
+    'PASSWORK_API_KEY',
+    'VAULT_ID',
+    'ITEM_NAME',
+    'ITEM_LOGIN',
+    'NEW_PASSWORD',
+    'URL'
+];
+
+// Проверка наличия всех необходимых переменных окружения
+requiredEnv.forEach(env => {
+    if (!process.env[env]) {
+        console.error(`Ошибка: Не задана переменная окружения ${env}`);
+        process.exit(1);
+    }
+});
+
+const {
+    PASSWORK_API_URL,
+    PASSWORK_API_KEY,
+    VAULT_ID,
+    ITEM_NAME,
+    ITEM_LOGIN,
+    NEW_PASSWORD,
+    URL
+} = process.env;
+
+const passwork = new Passwork(PASSWORK_API_URL);
+
+(async () => {
+    try {
+        // Авторизация в Passwork
+        await passwork.login(PASSWORK_API_KEY);
+        console.log('✅ Авторизация прошла успешно');
+
+        // Формирование данных для нового элемента
+        const newItemData = {
+            name: ITEM_NAME,
+            login: ITEM_LOGIN,
+            password: NEW_PASSWORD,
+            vaultId: VAULT_ID,
+            url: URL
+        };
+
+        // Добавление пароля
+        const newItem = await passwork.addPassword(newItemData);
+        
+        // Проверка успешного создания элемента
+        if (newItem && newItem.id) {
+            console.log(`✅ Элемент создан. ID: ${newItem.id}`);
+        } else {
+            throw new Error('Ошибка: Не удалось получить данные созданного элемента');
+        }
+
+    } catch (error) {
+        // Обработка ошибок API
+        const errorMessage = 
+            error.response && error.response.data 
+            ? `API вернул ошибку: ${JSON.stringify(error.response.data)}`
+            : `Произошла ошибка: ${error.message}`;
+        
+        console.error(`❌ ${errorMessage}`);
+        process.exit(1);
+    } finally {
+        try {
+            await passwork.logout();
+            console.log('✅ Сессия закрыта');
+        } catch (logoutError) {
+            console.error(
+                `⚠️ Ошибка при выходе: ${logoutError.message || 'Неизвестная ошибка'}`
+            );
+        }
+    }
+})();

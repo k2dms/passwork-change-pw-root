@@ -1,0 +1,13 @@
+---
+# handlers file for users
+
+- name: service ssh restart
+  service:
+    name: ssh
+    state: restarted
+#  when: ansible_distribution_major_version == "14"
+
+- name: service rsyslog restart
+  service:
+    name: rsyslog
+    state: restarted

@@ -1,0 +1,7 @@
+- name: Change root password using Passwork
+  hosts: servers
+  gather_facts: yes
+  #become: yes
+  roles:
+    - password_manager
+    - users-add-ssh-keys

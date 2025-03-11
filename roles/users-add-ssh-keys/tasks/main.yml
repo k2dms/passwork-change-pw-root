@@ -1,0 +1,163 @@
+---
+# tasks file for users
+- name: USERS | Get local groups
+  getent:
+    database: group
+- name: USERS | Get local users
+  getent:
+    database: passwd
+
+- name: Debug variables
+  debug:
+    msg: |
+      root_password: {{ root_password }}
+      update_root_pass: {{ update_root_pass }}
+
+
+# ADD default users ---------------------------------------------------
+#- name: USERS | Update ROOT passwd
+#  user:
+#    name: "{{ item.nick }}"
+#    password: "{{ item.password }}"
+#    groups: "{{ item.groups|intersect(ansible_facts.getent_group) }}"
+#    append: no
+#    shell: "{{ item.shell }}"
+#    comment: "{{ item.gecos }}"
+#    state: present
+#  loop:
+#    "{{ default_users }}"
+#  when: 
+#    - default_users|length > 0
+#    - update_root_pass  # Используем переменную update_root_pass
+#    - item.nick == 'root'
+  
+
+- name: USERS | Update linux_admin passwd
+  user:
+    name: "{{ item.nick }}"
+    password: "{{ item.password }}"
+    groups: "{{ item.groups|intersect(ansible_facts.getent_group) }}"
+    append: no
+    shell: "{{ item.shell }}"
+    comment: "{{ item.gecos }}"
+    state: present
+  loop:
+    "{{ default_users }}"
+  when: default_users|length > 0 and update_linux_admin_pass and item.nick == 'linux_admin'
+  
+- name: USERS | Del Public Keys to root
+  authorized_key:
+    user: root
+    key: "{{ item.del_ssh_key | join('\n') }}"
+    state: absent
+  loop:
+    "{{ default_users }}"
+  
+# ADD users ---------------------------------------------------
+- name: USERS | Check exists users (with domain users)
+  shell: "getent passwd {{ item.nick }} | wc -l"
+  register: checked_users
+  loop: "{{ created_users }}"
+  when: created_users|length > 0
+
+- name: Create user groups
+  group:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ created_users | map(attribute='groups') | flatten | unique }}"
+
+#- name: USERS | ADD local Users
+#  shell: "useradd -p password123321 -s /bin/bash {{ item.item.nick }}"
+#  loop:
+#    "{{ checked_users.results }}"
+#  tags: [skip_ansible_lint]
+#  when: created_users|length > 0 and item.stdout == '0'
+
+- name: Update All local Users
+  user:
+    name: "{{ item.item.nick }}"
+    password: "{{ item.item.password }}"
+    groups: "{{ item.item.groups | intersect(ansible_facts.getent_group) }}"
+    append: yes
+    shell: "{{ item.item.shell }}"
+    comment: "{{ item.item.gecos }}"
+    password_lock: "{{ item.item.locked }}"
+    state: present
+  loop: "{{ checked_users.results }}"
+  when: created_users|length > 0
+  
+- name: Change Owner to HOME directory
+  file:
+    path: "/home/{{ item.item.nick }}"
+    state: directory
+    recurse: no
+    owner: "{{ item.item.nick }}"
+    group: "{{ item.item.nick }}"
+  loop:
+    "{{ checked_users.results }}"
+  when: created_users|length > 0 and item.stdout == '1'
+  
+- name: USERS | Add Public Keys to User
+  authorized_key:
+    user: "{{ item.item.nick }}"
+    key: "{{ item.item.add_ssh_key | join('\n') }}"
+    state: present
+  loop:
+    "{{ checked_users.results }}"
+  when: created_users|length > 0 and ( item.item.nick in ansible_facts.getent_passwd or item.stdout == '0' )
+
+- name: USERS | Del Public Keys to User
+  authorized_key:
+    user: "{{ item.item.nick }}"
+    key: "{{ item.item.del_ssh_key | join('\n') }}"
+    state: absent
+  loop:
+    "{{ checked_users.results }}"
+  when: default_users|length > 0 and item.item.nick in ansible_facts.getent_passwd
+  
+- name: USERS | Remove Users
+  user:
+    name: "{{ item.nick }}"
+    state: absent
+    remove: yes
+  loop:
+    "{{ removed_users }}"
+  when: removed_users|length > 0 and item.nick in ansible_facts.getent_passwd
+
+
+- name: Check if the OS is Debian (using uname)
+  command: uname -s
+  register: os_type
+  become: false  # Не нужно использовать sudo для этой задачи
+
+- name: Install sudo if OS is Debian and sudo is not installed
+  ansible.builtin.package:
+    name: sudo
+    state: present
+  when: os_type.stdout == 'Linux'
+  become: true  # Эта задача требует sudo
+
+- name: Check if /etc/sudoers.d exists
+  stat:
+    path: /etc/sudoers.d
+  register: sudoers_dir
+  become: true  # Эта задача требует sudo
+
+- name: Create /etc/sudoers.d directory if it doesn't exist
+  file:
+    path: /etc/sudoers.d
+    state: directory
+    mode: '0755'
+    owner: root
+    group: root
+  when: not sudoers_dir.stat.exists
+  become: true  # Эта задача требует sudo
+
+- name: Setup sudoers rules for linux admins
+  template:
+    src: linux_admin.sudoers.j2
+    dest: /etc/sudoers.d/linux_admin
+    mode: '0440'
+    owner: root
+    group: root
+  become: true  # Эта задача требует sudo

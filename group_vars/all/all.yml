@@ -1,0 +1,190 @@
+---
+passwork_api_url: "https://passwork.eurostil.ru/api/v4"
+vault_id: "67b85d85da46d78f430238f5"
+item_id: ""
+item_login: "root"
+item_name: "{{ ansible_hostname }}"
+url: "{{ ansible_host }}"
+
+default_users:
+  - gecos: ''
+    nick: root
+    shell: /bin/bash
+    password: "{{ root_password }}"
+    groups: []
+    locked: no
+    add_ssh_key: []
+    del_ssh_key: 
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/ypvLexWKRA8Lv0fGR3FH24sCdDzZpy7Aw8dpEEfDrY9gDLmvH3MemzQb789P5wzvaNs7HD+4h1BqCMgCj9fDLXhvbQRmvpDppziUDwAshlX1zeZzqLVhfsMxO4Atx3fBDlsSxOabZo3nEGz/xW273v8xT0J8EnvAxy1BjLbzcZgWqpHJnz/uEUFuPD6bpNOFsVKAp2/7gcBeMx0fHQZUs4FWZq+BfjiOS2qGpQA0ATUW06yc4/7jt3lmFYyJVphTxNxEcdMVDfVd6LlNcA9NgRnSzV1+m3hHbjtq1Vs9a0FFlb5lsRVOcPdpEM73RG/rbt+2WerrD9rGXYZP7Ehl'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDg5jEvTe9HFhsa8o5mavuKVt5+ZEFFO9ndfu0VObcjFj7jAKf15nAtm0UXhDO6R7QdLFjQvloREhMZaselR6uIZd5m1/UGOGOd2Q3sAJN2/uTpjNjD57QYMsc1AMWgbudjbyjQ3AjYLxYKmcRHDyx0OPqEs26EkyZuRB7Jquk4XN2jovQ89tHSqrbpcUC2prHbnc8arFnNUjCKvAbOd4pu1AHsZScHzK4RCMYIbVHQrlIZUV9LStWakfDAAvNkIphXa0eCtsddX/rvfnSzu5/S4Eha98OgEBvDCa5sL/BD98enStqZ7H473jRvF81e9inCcIhFrdWOMGojAXjD4xN'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjdHu8bcGZmIEi5pb1jMI+jBPJXaIxjQRPEUDxEXtQcrvKEgPAPkjOXIZV3Em5l9Dd0JBJXOP8fpLlv7P/Qcm8FGOOAMHBZb2w81yDPtnPX9nDh152E1s9jaKQGZqDpGfWdXQkzPVKxLJYjFNx/TgcnevXF4+9ZIEHc57c65lRO9lBaiy4TiuG7XOCGT+kUuEr7GK550SUp9knW4f3Ajvv9JYfrwDfYjvCurP8nPuPZvr3cXvppLI2R1c/cT33SzJMOx/wMV8HdeBtx+xT4CVNmvUah/5wX3yIAgdaq1LEyZ4za+/hSFNAXxLmvWqJDAyjIqoTcC1hoVEjcEycWYmp vpushkin@office-admins-1.stroylandiya.org'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1qA4Mv9yMfzQB3mreR+605BkgwTx2jadKQ/G690/lLHJCfi2+xmODdbe2jUc1OeTTwBfWu8BOtDYbzhgcJkuFGvJ25VB2XpdfDoXV6/CDWllOXVvJNFgLvvhGqzSU6rMvtaPKELDyY1WwM+VLimPTxNHdIAWNlziky2TXEj0HViYVeERM/LSvm8zznM02WSWjgWQn6SuUeSSX2p6VjdIWSSp/04zEtHPogmsETzXy6jtIsdPJsyRwic5WPRppHF5lMFiA/bnvSv8N/VAK3+PbtLZ1jYhyD91FRc50cFwkL4QVNZI3dLvyrXF/kSd2G11eBiNTsxuB6gP5Ltc5ySQ7'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDkCySSa1H5pg6mTHHuc2DBjhVYZZlIKeiJd+MpclTzAih1EYBJehkLCVqBlM1hrHYdXfiVuhObOT4zwRkXzVmugg0m39ntn816nCg9s+NtqXfThQ78emveqFYBQUhfgNS6Q6ibAmboc1FG/X4aKkja4iM3gMh1TzvR8bepScEqBdmksyvCs4vzhnkCqsmgoXqY+haTMyq1oRuy+vlxRVA/Ia1VVo6c0kbPbxdBuJbr+UgYregUPMx0dkOK4JmSx8IfQpbmjS7ioRJeoa5+upgChumxkL4ESUTPq97oun0vUWw8g1FuHko0jdJwCetstwab9nB8FmIxYcDUs49GaQjPidf/sNHIxJgOISdoYIhmhkilIlJ3JYsLm3eoGNEXlm/MECGNJWfNucCCWOFksoCY5TcdQizZ4V36reeJ7w3UwaP3u3DneB5Du+cP2b2idyUQ2tQQK4n77/M+om1qVcieV7zjd6kGlUUyJRpNxOZEGG8ySVdi8bLVLHiwocbAW4Eir/AVuQDP3Hxj5bttJapeDBV+o6ArEnbDqU/0odm/vrOWdj6JgYaMqN9R0VTrb8Vop0hx/B21oEZaJGbxHBWOWVi+/aMZ7KSOt13SA5NQNCtF9IoVJk4AAtqdSlcEAg7h7WoRMwh4EvDprX1kpTz8tG5tR4dQqM9bQWzl/FP5Nw=='
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWbMWwOW3Df6aFR1/8n+AYcAuY2DSnpFtAHPg96tlUrwEKnefkI5GXqj4h0OT4yewqQEixhwQQmWC1sLWs/4Q7ogVchoESmuQgQ5j/lFlTiyP7KQDTzd3HzzmhaMa10p8sazwaNqxEyr8R2NgomSYzGshw5MFeGFSRwDVWFoXixKwz7BDdqEVIWwQ79ayTnbhZIDN4ma5MSCj3u8F7uKINGubazOE9kZPYad0e2ZN1flThRHPw95p/jVfBR/DaqZu8pjb+sosZrMppNz26ZLu34Y6n/qr5siV8tAt5kSU6+6OELdmk56VxLAsXk8DD2D3R2vK7dXuMOXBCCgADCzGn'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDafJjBk8oYooH6L1BsHgn0FNqmBmiyuR/zDUfRGIP96dvgvvABjUX8yzYubu42wUWRJ+rvyN2IEgRqKNpH0fSbIUiL3abH8n9ICq//di3mLxBzPJDqHVkfpfr3UermlNNKjsRV2BaQnjdTnUSG/f0qmIKxaOAilN/jfC6oEdH7juH1UF4TXX3FZC1MhPpXn0MbYQK8makhmIIVFq0bXqzqA+La7myKMwGkpv8vJPedREvuue4/IFOVkfhHK+qmSMJc9HP7srETiHff86dUZTozvcLourINs/CGFw76V6MLCyLrIH3+DzS+2W8L+1LVdRssyW5nFEKDNdEoJQ5gadc3'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVjcVXTgpw1O7yiJEP+4OWxsh9jFwqgTN7LpQrvpAvRY3mywizidpWLmdAMdwc3WOBizh7iBJyS4VeP146yoeQw/bmQuAmA3Z3Jn8kBPVuHcbZgSDVR9AbMWWyG6SeqMdOPPRafBrPe/Ivwf2TGjZfOEZ83PzNoOiQM4mjMy2bmkCYp2rJGvSDnu3KXWaJp+lzEkSZlMxxXablbYxpBsYBduibeDBoKG42GttWnUdv6FUnZ7LKgrXFlm5438E+z2KqfPz5AJJU6fHHPokmPpPWh9bL21WjWMZ81JP8yHr+uusEd+slxJ27enPbYQ8PT7FsfgVnMAU73YxOu/iOav55'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGMCqRpcJsrBKHmAfiovGqh9R6yoitmFClOjPVyIuVcGhzOjuLUqWi/ar/qEgADfQwNNOBvO/RLF0DcSI77YrV7wQ8aI+KaZetkZOUd5F1UY7ELWTEWg1dzkg0ARCa4nDviFwCDZC5YXPbzhYgNeuRs6pI8QvUf/6FU29rY9OG5MoJvs3hPs9Y7iol3JZepA1jXVbREM9nJvNvk+wAzLeisXDVWSOVe7vxt1h7q3UXZYKRhds3qybGAfh5JtwbmBPkDMOPLKICAr6fZ5GCqUxaZ9FBQbr8JkPjddNbev7mbsWzsk0dS9xlHOd6Qr2O8YXC/I7HAJPFcXHc6CN540VH'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDsHEAMxAMWRkKwLmNpdjReC1aNIjdQSzxYfeNYJhz2ZdzmxdAoumkqLGdZrWTx3d4LtSumNXTmHFVJgPFbMUYAqyZ9nphvyM1DbilNJZh9j5NHo3M/4ibV+HBX/lkY8+yrlbltv/ODPM5PhORXn9C0Z79nFDLejvB9iT3vA3At8PZFpZEeQfXffm6FfTSV+Gc2t7joQJmZWn2jaBxjFLt54s1iXbIcvmdNqJ75c+daO6bN/Y4RzYI6Gjlzux0LcUiQAyhKocbE6wE5SNYM3mDxvvDJPyDZsaXpRJNCmN+JSH5Box/OiNgjUVfTjPkJIQqI+6yOlXiHV4xgXRz58Rlj'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDIncsyYazGZ97soVhfAU7LKnSXX28rgZfHFNILSNk1DjPXNbpydKGPDko3J5UH1rnQhoWMmUx2D94RP08SGUeHXtkM4yY0mppgbu2MLIPnC2+eRl5XVs3xJtB36N6p/ZDb6KeJOL37z45qRfTdbh3w6u2Iv71PZC0+DGpXL/Bvi0BHT7KBO/PHXxvVXRpCPF3rqF7kP5ZQtL7WBtbYYkXC4/cQWZRPNvcOSIDuhBW0wRHWUaYl4cy0VazTCRl1uL8VA87UXJgjJLjUfxCiZXlX6CUjgf6N73mmizL3jG7tgWDmkUE8D3xm1Eqhyi1Z2HlKL8tFYqB/R2rtoWE+MDEO37NjQyofCOKVIZ+hzGmbLZxn3xnYwlktyJ69taqnosV6z5fy3cq2BNEP79qhzk46X/yLczrOZzuH15alBN3Rq0P1ODaoGK4MknOPtArESP+fRZm6xV10qxSkT02pzPpMSQKxb+eGQZyWDbskylqsHMbLV3RgyccskNzWTKjKSk8='
+  - gecos: 'Linux Admin'
+    nick: linux_admin
+    shell: /bin/bash
+    password: $6$1ekIV0AB$Uo0q96av4HGk/D47tkSPQ.qIfp6053FiKdDTh.h6EUyLrLpuXCYRNhaSmsAX/g0gPiu3ERHvS27VMxEsevN8O1
+    groups: []
+    locked: no
+    add_ssh_key: []
+    del_ssh_key: []
+
+
+
+created_users:
+
+  - gecos: 'Чильдинов Александр Владимирович (Дежурный Системный Администратор)'
+    nick: avc
+    shell: /bin/bash
+    password: $6$qGr6c8ZE$Atb8eACJC4LtfOtwFgJ9gyXhSSeMp1N36O2RYumdyIMSWMFqfpD3E8xf8cu8dJfEChOj26GclvaxDKc.apIQr/
+    groups: [linux_admin, libvirt, asterisk]
+    locked: no
+    add_ssh_key:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCbXKFA+FL0vxammBWoms2WnrM5rvkdDhKaMeM7oRdSbU0k/GqfqvMkS+WleQHIWSMKtrZiXBaYHNI6V32XseaplL9C6rjByc4WGXBTJaDBx5TTzx/oDWG4Pw+zuGDUpxwf4O2shO5Il6P8QIiA1HXNkZWRsq2JoLWqv8bVr6VT/8aof/pW9WwArnM2gQbVOwJgw5rTsLZ00s+XD2wDFpDp/idDepzCcMbVFljjnFlausAHCSl9zI311ZkKi4iZqpnaJDvb3NHlYnv4XjKK+wU7wPq0NCL3axoMOwxRgH4pwYxrnjRggrWa8+ZdR+XTiFWNX7EbgyYAHV5Rw3/EYrjh rsa-key-20241105'
+    del_ssh_key: []
+
+
+  - gecos: 'Коновалов Владислав Вячеславович (Системный Администратор)'
+    nick: kvv
+    shell: /bin/bash
+    password: $6$jyj1txhf3DcyDc/p$Rz/eskDfrFOo0Ewg7cCMlxHZ8IRCXt.GxW6p9wFdUxp010cZwE.0y1WDBRvV9O3cMnT3c1tnsLrUofQ6a0VRO1
+    groups: [linux_admin, libvirt]
+    locked: no
+    add_ssh_key: []
+    del_ssh_key: []
+
+
+  - gecos: 'Полчунов Юрий Павлович (Информационная Безопасность)'
+    nick: polchunov.yp
+    shell: /bin/bash
+    password: $6$E4/5xLtI0Eaige74$QAryScNDFVHBP6dXM5INj7Hro5EUfILv1pcnO64Ob2zs.rQJxpT8lifump2zJm6TotTRjma3eBxRDl3NUROBg0
+    groups: [linux_admin, libvirt, asterisk]
+    locked: no
+    add_ssh_key:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEpMj0YqC4b0m3ttxtRP1QvuIsJNDmAC406WsuqN96Swl6K+NXzo6i34ncjotP7PxUBzSz8dAMek9FyxM45sUubcDYMKkRoCvpg2birWSCtWtd0hggm/WRwru8a7D0yFhJ+WdCNHpgKwqyEiEk0RcZpjpJODEznAD9HZsC0EgYrwunb3ewaaQCL0U5Mdg9q1XRkZAqjhiH8OPf89ayPhIIUkPLkhqZZhS4YdvR+BZTcoJd3o33RCXOR7vrNZpyfCKPQkasQIq2Y/1gwm2hyJNTpwxrMNzrwSpzHErc4iHt4T8OghcT/W45vtPB+zsdCet11+q79HH+6oajI3gNEX1j'
+    del_ssh_key: []
+
+
+  - gecos: 'Климов Никита Михайлович (Системный Администратор)'
+    nick: n.klimov
+    shell: /bin/bash
+    password: $6$CopllUYYpj/iPMnD$Xkvh71XpxhYUY/cZoFLUaUXNKbIJvzMFFWo8/gAigQlA3ya4arj2YZ0QOUkyX8slKJawcnoP6s/3G./7K9jw11
+    groups: [linux_admin, libvirt, asterisk]
+    locked: no
+    add_ssh_key:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCaf5VHIWSYF/hPDwhmQ78pHDbD9lBVfSAbZ9Pk+L7QxSD9ZKE6enwGXdsdJ/cZ7Lr/AYQ5Oze6+yJoVDvQ7DB+M+WeQL7IYriBVAM/RAXsTXIAyh30fC9AfGwhA4sakSYM/D0e+jimC5x8gwfEkyJOg0S4LMal8Tgz0mnHWUezmTF+Lsx3NAerkaX5hD3EZ1NWIq72tppEO22uOl0YGbYKpBwUmKXwjaFPzXxy1fMCINFIz3f1QHiPx0ExaXTgY+2Ky+3Qvk7uaQMhD85sYX/zs1hc2xOxDunkhEVJ6Wp0FCOvsYODVEIp2J8IEiy6DhIX8lypxdi0VDZR/3c0fxj0NyDeTSdzjwiscjsvjfHFkxRy6A2aZhkMTJHhETkF866g4k8u8hL1HaRueZm0N+ZBxFB1aef640xr5Ut9INUBdBgkh572zT3xrcXhMalb6afXKtd3wiHSk/zxzgMLubr5SKVoWFipesKuZWhIKQwWMhuFi8ylheHmcsuHtEiBeFTSUvkTKpPbby+DyeUmU0h9knKUg2ggUAZvyipBzbsSUQry5o9Q1KxeM7OEr/iDV3po5Ct9y3xnq7IxEiyHWbeVBJTawXlXZc5I0LB2KSw3Y/6zKE6RuNdiS7VrPZDedhko8g7WZRb18cME/2tyUeeCRUnU9+d943Ddi5hz9McgFw== nklimov@of-adm-10'
+    del_ssh_key: []
+
+
+  - gecos: 'Илья (Системный Архитектор)'
+    nick: ilya.go
+    shell: /bin/bash
+    password: $6$CopllUYYpj/iPMnD$Xkvh71XpxhYUY/cZoFLUaUXNKbIJvzMFFWo8/gAigQlA3ya4arj2YZ0QOUkyX8slKJawcnoP6s/3G./7K9jw11
+    groups: [linux_admin, libvirt, asterisk]
+    locked: no
+    add_ssh_key:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4J/LK3cedPbnHrn2+P95DyBhygnMxYuU9ELyT+g1TQFBKRNaLf/ifCcPkKzkS64IWcO4vDUUEUAxxNOdNzzh4B3AF3f7rR75Y0+uvqX7tXMGhWGIUVe/qL3TFI2fsJ20n3mxSKB8uF57fSIvzzu9BKDDT8zQ0GTrtnnvMy60sTIackCOucE2nc/lKQ/d/MTLlqahfeaKfhakvFnyda/Vc8EseX6kBkNgGXQkmLFf4LSpxt57jVjIu89pOWhuLdu/1WqPA3l2ZYTcUM9HBneWVsRRoAmXzyVLuBSLlIiFNjjqtmQDybWHIPy3sNHlErjNFBFtOavKQrAoNgNHPSINx eurostil\ilya.goryainov@OF-COM82'
+    del_ssh_key: []
+
+
+  - gecos: 'Антон (Системный Архитектор)'
+    nick: anton.sh
+    shell: /bin/bash
+    password: $6$CopllUYYpj/iPMnD$Xkvh71XpxhYUY/cZoFLUaUXNKbIJvzMFFWo8/gAigQlA3ya4arj2YZ0QOUkyX8slKJawcnoP6s/3G./7K9jw11
+    groups: [linux_admin, libvirt, asterisk]
+    locked: no
+    add_ssh_key:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDPGoPZWqgnKchpPXRUP+6wtgjWlsu3ASbbsp6fEwv9ZgsWsdIS+WOmjjrwk0OvjwEug/vt3cv2pKM+5mti31zIbi+594hpJihNdNY37Y7TuxesCFQFA73rLqMk21ScZNueOJiMbsXyaA8Z0BgiFxwU9ior+u5/ZZXy0ZVOAQihdO1s9jhVyBsK5l0GPgHgG2FgdmUV1qrvj1Cj91pRVF8HYAB4OcMbtQIJO2W1gL8j4UNO58I2Ko49zmmDMmTPY987P+UlyK3v0eWPIyw+tJ+aClfXxNYEyYbhg7nKRC0tu4QUwmpvHI85RPUYbzO5E/2/28dweXpO3SvYWY93mpwSIbTMhtStmjNDePe45vJUMn3QFYocsx8YOU0ic8S2kPgsmhnGXZvruJRD3Den7dmXXGEtuT5A+2SmieUyzfqJ+Sh7fQsYZjj5gSAQnCV2yNKK+/hW9av6oxGyiZoG11qrRsc1zxbv4rLaO25JWJ6ZDV8mppoA7ce67yXtePfQ8zKIyclw7T53hvdLRabbTC3L94qSwrkhvyPge6yFVjZi99euLbNCn2Tuce6wtTogXHDE1ehGxQivNVkKEPgAFx67fUqxMOO5FURqmHIfKU4TLQ7u37nulfxQWjNH8/5UeHOh2kDEZXJ/bF0KsNnF5Bxo12+W5kK7XP1tY7CVmY6D3Q== admin@DESKTOP-QGK8NCC'
+    del_ssh_key: []
+
+
+  - gecos: 'Даниленко Сергей Федорович (гл. Системный Администратор)'
+    nick: sergey.da
+    shell: /bin/bash
+    password: $6$CopllUYYpj/iPMnD$Xkvh71XpxhYUY/cvzMFFWo8/gAigQlA3ya4arj2YZ0QOUkyX8slKJawcnoP6s/3G./7K9jw11
+    groups: [linux_admin, libvirt, asterisk]
+    locked: no
+    add_ssh_key:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5OWQwQ3FIVzuyMz7hb9QY/ZLOi0IYnVfeUTiQDiVz1aBVxPfpq1WF6WvzQQw2Zk6kpp3y68kjWd3gwGIY4julliBlvy4myybrIIfwmLaHDCxLnTwRQIFv32djixRKy23lCXVqebgfn3vglR6vFVqSzQYEI0bqDbUOT70cN3E3BQAHyah2PgZl3qkNfdz09uVtfDMRliVzZ1vkMiplgYcsTS0pAWXC6K+gtnw8rRxvK5Txm6vLjwzjPO7QNoegcKFIrfr6j8EhkgwlMqyATvF8Dn7xAyf+d/G9i7yiHonN2FRNTGLWDazkTOyNfbNxeeLKuf1a0YztSYM/YJsmfNX5 eurostil\sergey.danilenko@OF-COM82'
+    del_ssh_key: []
+
+  - gecos: 'Карпиков Алексей Михайлович (Системный Администратор)'
+    nick: aleksey.ka
+    shell: /bin/bash
+    password: $6$CopllUYYpj/iPMnD$Xkvh71XpxhYUY/cZoFLUaUXNKbIJvzMFFWo8/gAigQlA3ya4arj2YZ0QOUkyX8slKJawcnoP6s/3G./7K9jw11
+    groups: [linux_admin, libvirt, asterisk]
+    locked: no
+    add_ssh_key:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDFUOaoVl3kINSNLVb4aDPFlo/dpwqzv+wU4k4lkG5ssmQXl7VTizSetGR0HAq/xABwcWWJbZA5SSoWezOl/kGkYm/m6mWvVi4dTDJkL62OEfMhMblbHrDEF++30Llk7FOCm38+3FPXITGBbydek25nCTDPNdoHeNd44mya6wdVil+dudMckGsjzhYo3geZsZHeOBD8W9al2En485z/0W+1EGxR0xfjTd+zZFGqibP4X3UyYbMNZNDH6f7a05fRXKlLKkErMbITr21vpeGwjn69xdsSOu5/n/IIxbi0L3OwPnZ/rzfDGF6O5tQ4dxb/dCiPPrHOKNZG8NVQvVj26oQJ rsa-key-20230622'
+    del_ssh_key: []
+
+  - gecos: 'Щелоков Дмитрий Евгеньевич (Системный Администратор)'
+    nick: a.dms
+    shell: /bin/bash
+    password: $6$1tvWrjtj$L/wg9FgCbR7SMXCk3slOq.O0CejSAJ0kKQbey9jNTC6ybPUQoamzjgsiTa6KzMC6wuqpqUcI6DxdrwaeKfDJ61
+    groups: [linux_admin, libvirt, asterisk]
+    locked: no
+    add_ssh_key:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOHhMTyafSo+zokxvxaTfnTbknfFGWDU40z9Ok3rGqsT4bk5ydfZGafe/3m8TDcwGtLZaKyzCPH6Rzh/fCYMwHqblyACjVndcpq0GacT3bZn0mXm7y0vddwYSAfTy2oODzGUms8XbUrKMlmdQ3GW9NEZIwuATXkeKXE/Ig5Zj6vTZWWCktz7I0oyanZj6NVE3t5giy8mrs4J05WxYITs9H/EGdo1YotgQofnSfk3GDvXok4RYlCjXk7Nz30RETG4lZTzgYsGwi+l3vniRgUcmhRU0k71moMGIbwSbziq2NSPTMbDWNt1ja8k6iLCjtJ4hmgGED8/XbheN16tqiw8Xj rsa-key-20240424'
+    del_ssh_key: []
+
+  - gecos: 'kadmin from Poligon (Access from server poligon)'
+    nick: kadmin
+    shell: /bin/bash
+    password: $6$CopllUYYpj/iPMnD$Xkvh71XpxhYUY/cvzMFFWo8/gAigQlA3ya4arj2YZ0QOUkyX8slKJawcnoP6s/3G./7K9jw11
+    groups: [linux_admin, libvirt, asterisk]
+    locked: no
+    add_ssh_key:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCoZOitxvbroddY/kfo9QjIOq9DRESfv9Cus4yVG5zfo9Mj7yZ+blRDd3QPegRnlOkw3f7iE6zkFf3G0TydtgzjifdOW3a4Hh7RL42dW6cbMFNF5HBcVHquCJaRqDTY5Bn5kOVEksnNJA5ZCSKyAdIdWz83/vdm2KW4WphOjNsse7WwGbIyNbfjo9XseEbqoHgPt+Lp5Tb+/PS7pWPqyUUablN4LPmZZzsvmnpDgcDoZuo4ZYSDcW4DKaO+fjNZYWwv7czptAwfQFffOI128C2QOKD/YtaKMhPFZAI9j34WzTvha5F2A3uuodEqDtM4CYAWKZ2Av2Z1eqQkgaaLLyKIKKeFJxaF8w4W+9M/EVwT2bDKF4oKyoemkDhNf0ivg0geBpV0DIxI8IwAf5gdrDJWjY3nuDbFt1f7jJR/4TzFPd2XkcPOtnswougQfQd5b7UQ6rbOQGAepSOmiZJHGXqbEcT2YpRWSrm56h/s7WTZqKUalR9OJUqUB1VWWBhMDB8= kadmin@poligon'
+    del_ssh_key: []
+
+# добавление своего пользователя для дальнейшего запуска роли по примеру ниже
+#  - gecos: 'Щелоков Дмитрий Евгеньевич (Системный Администратор)'
+#    nick: a.dms
+#    shell: /bin/bash
+#    password: $6$UDynvsQ2$7ohZLNAi0QPA5kPr9EhTf2Ipl/oULaVlbV3zTBH41.9h9c83ypwxbkGNwtcN8nqmelxTYQYP67ltpU.3tIkkN0
+#    groups: [linux_admin, libvirt, asterisk]
+#    locked: no
+#    add_ssh_key:
+#      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOHhMTyafSo+zokxvxaTfnTbknfFGWDU40z9Ok3rGqsT4bk5ydfZGafe/3m8TDcwGtLZaKyzCPH6Rzh/fCYMwHqblyACjVndcpq0GacT3bZn0mXm7y0vddwYSAfTy2oODzGUms8XbUrKMlmdQ3GW9NEZIwuATXkeKXE/Ig5Zj6vTZWWCktz7I0oyanZj6NVE3t5giy8mrs4J05WxYITs9H/EGdo1YotgQofnSfk3GDvXok4RYlCjXk7Nz30RETG4lZTzgYsGwi+l3vniRgUcmhRU0k71moMGIbwSbziq2NSPTMbDWNt1ja8k6iLCjtJ4hmgGED8/XbheN16tqiw8Xj rsa-key-20240424'
+#    del_ssh_key: []
+
+
+
+#----- special users -----
+special_users:
+  - gecos: 'StackStorm User ChatOps'
+    nick: bender
+    shell: /bin/bash
+    password: $6$opJFKfZ9$at1HSCe6QpYUTDi5KntO.HuksoEzn5H6jZQQgu9Rpb0qC2IoG6RK7TiuZBNCWd5MnYuaWZfvVg/0bQ4Op96kf.
+    groups: [wheel,sudo]
+    locked: no
+    add_ssh_key:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7UqJvvhH8iwTgjqSntxeCdiWVoZuyWhanWjFSFAIIjdN7KKZeaRhFLi9UdhAlwrSJ16xWHw8UHrj8MAIEUXZWqqjIasddDEEi2B2DQgBQUOcFbCXGmGDOh8nH2SRPKgEfU/Hmah3E3MU7CVxqMVmIk1BOK+QgliyJCdn9kWvAp5pjNH1zpjRJgQbwep47q5G+/F7UMUxu1Oe6iFj3Nxcdfc1IbHeZLbsTbpk5B1KLIOFdaHewlaLi7wa0pBjr3a31i3pnN/PJIqKtW0l3urysSeW5D50S+hBZDMqWbN2ip+CRU3fO8goBKVawbq7aWrdX1Lf2Og2N6QILSrJnNFzV"
+    del_ssh_key: []
+
+
+removed_users:
+  - nick: acherkasov
+  - nick: ilya.sa
+  - nick: maxim.ea
+  - nick: raida.fa
+  - nick: moseenko.se
+  - nick: albert.ah
+  - nick: anton.pi
+  - nick: vitaliy.pu
+  - nick: vadim.la
+  - nick: linux_support
+  - nick: anton.ch
+  - nick: aleksandr.gl
+  - nick: ansible-pull
+  - nick: ansible
+  - nick: aleksandr.vo
+  - nick: vva
+  - nick: filipp.tk

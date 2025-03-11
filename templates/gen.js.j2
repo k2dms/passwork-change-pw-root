@@ -1,0 +1,45 @@
+const Passwork = require('./src/passwork-api');
+
+const passwork = new Passwork(process.env.PASSWORK_API_URL);
+
+(async () => {
+    try {
+        // Авторизация
+        await passwork.login(process.env.PASSWORK_API_KEY);
+
+        // Поиск паролей с параметрами
+        let searchResults = await passwork.searchPasswords({
+            name: process.env.ITEM_NAME,
+            vaultId: process.env.VAULT_ID,
+            includeShared: false,
+            includeShortcuts: false
+        });
+
+        console.log("Результаты поиска:", searchResults);
+
+        // Если найдены результаты, расшифровываем пароль
+        if (searchResults && searchResults.length > 0) {
+            let passwordId = searchResults[0].id;
+            console.log(`Пароль для ID ${passwordId}:`);
+
+            // Получаем зашифрованный пароль с использованием метода getPassword
+            let passwordDetails = await passwork.getPassword(passwordId);
+
+            // Если getPassword возвращает функцию, вызываем её для получения пароля
+            if (typeof passwordDetails.getPassword === 'function') {
+                let decryptedPassword = await passwordDetails.getPassword();
+                console.log("Расшифрованный пароль:", decryptedPassword);
+                console.log("RETRIEVED_PASSWORD:", decryptedPassword);  // Добавляем метку для парсинга
+            } else {
+                console.log("Ошибка: Метод getPassword не является функцией.");
+            }
+        } else {
+            console.log("Ошибка: Пароль не найден.");
+        }
+
+    } catch (error) {
+        console.error("Ошибка при выполнении:", error);
+    } finally {
+        await passwork.logout();  // Закрытие сессии
+    }
+})();

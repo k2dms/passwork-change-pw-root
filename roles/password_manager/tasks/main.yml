@@ -1,0 +1,107 @@
+- name: Generate new password
+  shell: "openssl rand -base64 16"
+  register: generated_password
+  delegate_to: localhost
+
+- name: Check if password was generated successfully
+  fail:
+    msg: "Password generation failed"
+  when: generated_password.stdout is not defined
+  delegate_to: localhost
+
+- name: Log generated password (for debug purposes)
+  debug:
+    msg: "Generated password: {{ generated_password.stdout }}"
+  delegate_to: localhost
+
+#- name: Copy full-chain.crt to trusted certificates
+#  copy:
+ #   src: "{{ playbook_dir }}/crt/full-chain.crt"
+  #  dest: "/usr/local/share/ca-certificates/full-chain.crt"
+   # mode: '0644'
+
+#- name: Update CA certificates
+ # command: update-ca-certificates
+  #delegate_to: localhost
+
+- name: Clone js-connector repository
+  git:
+    repo: "https://srv-glory.eurostil.ru/dmitry.shelokov/js-connector.git"
+    dest: "{{ playbook_dir }}/js-connector"
+    force: yes
+  register: git_clone_result
+  delegate_to: localhost
+
+- name: Install npm dependencies
+  command: npm install
+  args:
+    chdir: "{{ playbook_dir }}/js-connector"
+  delegate_to: localhost
+
+- name: Log git clone result
+  debug:
+    msg: "Git clone output: {{ git_clone_result }}"
+  delegate_to: localhost
+
+- name: Add pw.js.j2 template to js-connector
+  template:
+    src: pw.js.j2
+    dest: "{{ playbook_dir }}/js-connector/pw.js"
+    mode: '0644'
+  delegate_to: localhost
+
+- name: Check if pw.js exists
+  stat:
+    path: "{{ playbook_dir }}/js-connector/pw.js"
+  register: passwork_helper_stat
+  delegate_to: localhost
+
+- name: Fail if pw.js does not exist
+  fail:
+    msg: "The file pw.js does not exist in the expected directory!"
+  when: not passwork_helper_stat.stat.exists
+  delegate_to: localhost
+
+- name: Show environment before adding password
+  debug:
+    msg:
+      PASSWORK_API_URL: "{{ passwork_api_url }}"
+      PASSWORK_API_KEY: "{{ lookup('env', 'PASSWORK_API_KEY') }}"
+      VAULT_ID: "{{ vault_id }}"
+      ITEM_NAME: "{{ item_name }}"
+      ITEM_LOGIN: "{{ item_login }}"
+      NEW_PASSWORD: "{{ generated_password.stdout }}"
+      URL: "{{ url }}"
+  delegate_to: localhost
+
+- name: Add new password in Passwork
+  command: node "{{ playbook_dir }}/js-connector/pw.js"
+  environment:
+    PASSWORK_API_URL: "{{ passwork_api_url }}"
+    PASSWORK_API_KEY: "{{ lookup('env', 'PASSWORK_API_KEY') }}"
+    VAULT_ID: "{{ vault_id }}"
+    ITEM_NAME: "{{ item_name }}"
+    ITEM_LOGIN: "{{ item_login }}"
+    NEW_PASSWORD: "{{ generated_password.stdout }}"
+    URL: "{{ url }}"
+  register: passwork_add_result
+  delegate_to: localhost
+
+- name: Log command execution result
+  debug:
+    msg: "Passwork add result: {{ passwork_add_result.stdout }}"
+  delegate_to: localhost
+
+- name: Log error if any
+  debug:
+    msg: "Error during Passwork add: {{ passwork_add_result.stderr }}"
+  when: passwork_add_result.rc != 0
+  delegate_to: localhost
+
+- name: Change password on the remote VM
+  user:
+    name: "{{ item_login }}"
+    password: "{{ generated_password.stdout | password_hash('sha512') }}"
+  delegate_to: "{{ inventory_hostname }}"
+  become: yes
+  become_user: root

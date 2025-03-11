@@ -1,0 +1,7 @@
+---
+# defaults file for users-add-ssh-keys role
+
+root_password: false
+update_root_pass: false
+update_linux_admin_pass: false
+disable_root_login: false
